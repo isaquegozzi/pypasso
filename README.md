@@ -10,7 +10,7 @@ Curso completo: as 24 aulas existem, com explicação, objetivos, código inicia
 
 O que já funciona:
 
-- Navegação por hash entre as aulas, com seletor agrupado por módulo, contador de progresso e indication de aula concluída.
+- Navegação por hash entre as aulas, com seletor agrupado por módulo, contador de progresso e indicação de aula concluída.
 - Editor de código com realce de sintaxe Python, executável por botão ou por `Ctrl`/`Cmd + Enter`.
 - Execução do Python em um Web Worker, com um console REPL opcional que compartilha as variáveis com o editor.
 - Correção do exercício pela saída do programa.
@@ -24,7 +24,34 @@ O que não está resolvido:
 - **O projeto não tem arquivo de licença.**
 - A documentação e parte do texto da aplicação ainda citam uma caixa de texto de entradas que não existe mais. Hoje o `input()` abre uma janela modal.
 
-## Como o exercício é corrigido
+## Funcionalidades implementadas
+
+### Percurso do curso
+
+- Navegação por hash entre as aulas, com seletor agrupado por módulo, contador de progresso e indicação de aula concluída.
+- Cada aula tem duas abas: **Ler**, com objetivos e explicação, e **Desafio**, com o enunciado e o botão de verificação.
+- O editor já vem preenchido com o código inicial da aula, ou com o rascunho do aluno.
+- Botões de executar, parar, restaurar o código inicial e limpar.
+- Bloco de resultado com os erros traduzidos para português, indicando a dica e o número da linha.
+
+### Execução do Python
+
+- O Python roda em um Web Worker, com o Pyodide carregado sob demanda.
+- Cada execução tem limite de 5 segundos e o limite é de uma execução por vez.
+- Há uma nova tentativa automática se o Pyodide falhar ao carregar.
+- Console REPL opcional, com histórico, que compartilha as variáveis com o editor.
+- Respostas de `input()` são coletadas em uma janela modal e o programa roda de novo com a resposta.
+
+### Correção e progresso
+
+- O exercício é verificado comparando a saída do programa com a saída esperada. O mecanismo está detalhado abaixo.
+- A aula é marcada como concluída automaticamente quando o exercício passa.
+- A marcação também pode ser feita manualmente.
+- Progresso e rascunhos são gravados no navegador, com salvamento automático.
+- Um laboratório separado das aulas, com rascunho próprio.
+- Tema claro e escuro, respeitando a preferência do sistema na primeira visita.
+
+### Como o exercício é corrigido
 
 Este é o ponto central do projeto, e vale explicar direito.
 
