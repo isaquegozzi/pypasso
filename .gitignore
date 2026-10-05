@@ -1,0 +1,17 @@
+# Dependências
+node_modules/
+
+# Build
+dist/
+build/
+
+# Configuração local de ferramentas de IA
+.claude/
+.codex/
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
